@@ -1,0 +1,56 @@
+#!/usr/bin/python3
+import sys
+from compute_values import *
+
+def get_input():
+    try:
+        input_value = input("Enter next value: ")
+    except:
+        print("104neutrinos: Bad input, please enter a ")
+        exit(84)
+    return input_value
+
+def help_menu():
+    print("USAGE\n\t./104neutrinos n a h sd\n\nDESCRIPTION\n\tn\tnumber of values"
+          "\n\ta\tarithmetic mean\n\th\tharmonic mean\n\tsd\tstandard deviation")
+
+def handle_arguments():
+    input_elements = []
+    args = sys.argv
+    input_elements = {"nb_elements" : 0, "arithmetic_mean" : 0, "harmonic_mean" : 0, "standard_deviation" : 0, "root_mean_square": 0, "previous_mean": 0}
+
+    if args[1] == "-h":
+        help_menu()
+        exit(0)
+    try:
+        input_elements["nb_elements"] = int(args[1])
+        input_elements["arithmetic_mean"] = int(args[2])
+        input_elements["previous_mean"] = input_elements["arithmetic_mean"]
+        input_elements["harmonic_mean"] = int(args[3])
+        input_elements["standard_deviation"] = int(args[4])
+    except:
+        print("104neutrinos: Bad arguments, please refer to help menu (-h)")
+        exit(84)
+    return input_elements
+
+def display_values(values):
+    print("\tNumber of values:\t{:.2f}".format(values["nb_elements"]))
+    print("\tStandard deviation:\t{:.2f}".format(values["standard_deviation"]))
+    print("\tArithmetic mean:\t{:.2f}".format(values["arithmetic_mean"]))
+    print("\tRoot mean square:\t{:.2f}".format(get_root_mean_square(values)))
+    print("\tHarmonic mean:\t\t{:.2f}".format(values["harmonic_mean"]))
+    
+
+def main():
+    values = handle_arguments()
+    new_value = 0
+    input_value = get_input()
+
+    while input_value != "END":
+        new_value = int(input_value)
+        values = update_values(values, new_value)
+        display_values(values)
+        input_value = get_input()
+    
+if "__main__" == __name__:
+    main()
