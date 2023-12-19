@@ -60,4 +60,8 @@ def main():
         input_value = get_input()
     
 if "__main__" == __name__:
-    main()
+    try:
+        main()
+    except:
+        print("104neutrinos: An unknown error occured")
+        exit(84)
