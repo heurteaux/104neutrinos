@@ -40,6 +40,13 @@ def display_values(values):
     print("\tRoot mean square:\t{:.2f}".format(get_root_mean_square(values)))
     print("\tHarmonic mean:\t\t{:.2f}".format(values["harmonic_mean"]))
     
+def convert_value(input_value):
+    try:
+        return int(input_value)
+    except:
+        print("104neutrinos: Invalid entry, please enter a valid integer value as input. Refer to help menu for more information (-h)")
+        exit(84)
+
 
 def main():
     values = handle_arguments()
@@ -47,7 +54,7 @@ def main():
     input_value = get_input()
 
     while input_value != "END":
-        new_value = int(input_value)
+        new_value = convert_value(input_value)
         values = update_values(values, new_value)
         display_values(values)
         input_value = get_input()
