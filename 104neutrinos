@@ -38,7 +38,7 @@ def display_values(values):
     print("\tStandard deviation:\t{:.2f}".format(values["standard_deviation"]))
     print("\tArithmetic mean:\t{:.2f}".format(values["arithmetic_mean"]))
     print("\tRoot mean square:\t{:.2f}".format(get_root_mean_square(values)))
-    print("\tHarmonic mean:\t\t{:.2f}".format(values["harmonic_mean"]))
+    print("\tHarmonic mean:\t\t{:.2f}\n".format(values["harmonic_mean"]))
     
 def convert_value(input_value):
     try:
