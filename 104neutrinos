@@ -15,6 +15,10 @@ def help_menu():
           "\n\ta\tarithmetic mean\n\th\tharmonic mean\n\tsd\tstandard deviation")
 
 def handle_arguments():
+    if len(sys.argv) != 5:
+        print("104neutrinos: Incorrect arguments count, please refer to help (-h)")
+        exit(84)
+        
     input_elements = []
     args = sys.argv
     input_elements = {"nb_elements" : 0, "arithmetic_mean" : 0, "harmonic_mean" : 0, "standard_deviation" : 0, "root_mean_square": 0, "previous_mean": 0}
