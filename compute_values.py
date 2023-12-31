@@ -24,9 +24,9 @@ def add_standard_deviation(values, new_value):
     if (new_value == 0):
         print("104neutrinos: Value must not be equal to 0")
         exit(84)
-    top_value = (values["nb_elements"] - 1) * (values["standard_deviation"]**2 + (values["arithmetic_mean"] - values["previous_mean"])**2) + ((new_value - values["arithmetic_mean"])**2)
+    top_value = (values["nb_elements"] - 1) * values["standard_deviation"]**2 + (new_value - values["arithmetic_mean"])**2
     try:
-        return math.sqrt(top_value / values["nb_elements"])
+        return math.sqrt(top_value / (values["nb_elements"]))
     except:
         print("104neutrinos: Cannot add value, implies division by zero")
         exit(84)
