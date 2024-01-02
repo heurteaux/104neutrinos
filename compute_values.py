@@ -27,7 +27,11 @@ def add_standard_deviation(values, new_value):
         exit(84)
     top_value = (values["nb_elements"] - 1) * (values["standard_deviation"]**2 + (values["arithmetic_mean"] - values["previous_mean"])**2) + ((new_value - values["arithmetic_mean"])**2)
     try:
-        return math.sqrt(top_value / values["nb_elements"])
+        standard_deviation = math.sqrt(top_value / values["nb_elements"])
+        if standard_deviation < 0:
+            print("104neutrinos: Math error, standard deviation cannot be positive")
+            exit(84)
+        return standard_deviation
     except:
         print("104neutrinos: Cannot add value, implies division by zero")
         exit(84)

@@ -15,7 +15,7 @@ def help_menu():
           "\n\ta\tarithmetic mean\n\th\tharmonic mean\n\tsd\tstandard deviation")
 
 def handle_arguments():
-    if len(sys.argv) != 5:
+    if len(sys.argv) != 5 and len(sys.argv) != 2:
         print("104neutrinos: Incorrect arguments count, please refer to help (-h)")
         exit(84)
         
@@ -34,6 +34,9 @@ def handle_arguments():
         input_elements["standard_deviation"] = int(args[4])
     except:
         print("104neutrinos: Bad arguments, please refer to help menu (-h)")
+        exit(84)
+    if input_elements["standard_deviation"] < 0:
+        print("104neutrinos: Standard deviation value must be positive. Please refer to help menu (-h)")
         exit(84)
     return input_elements
 
