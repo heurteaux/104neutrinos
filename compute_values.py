@@ -5,8 +5,9 @@ def add_arithmetic_mean(values, new_value):
         print("104neutrinos: Value must not be equal to 0")
         exit(84)
     try:
+        values["previous_mean"] = values["arithmetic_mean"]
         return (values["arithmetic_mean"] * (values["nb_elements"] - 1) + new_value) / values["nb_elements"]
-    except:
+    except ZeroDivisionError:
         print("104neutrinos: Cannot add value, implies division by zero")
         exit(84)
 
